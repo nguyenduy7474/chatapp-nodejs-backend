@@ -1,4 +1,6 @@
 {
+	"name": "myapp",
+	"version": "0.0.1",
   "requires": true,
   "lockfileVersion": 1,
   "scripts": {

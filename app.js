@@ -1,10 +1,10 @@
 const express = require("express");
 const app = express();
 const server = require("http").createServer(app);
-const io = require("socket.io")(server);
+var io = require("socket.io")(server);
 const port = 3000;
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1/chatapp', { useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true }); // connect to our database
+mongoose.connect('mongodb+srv://chatapp:123654789@cluster0.1jwuj.mongodb.net/chatapp?retryWrites=true&w=majority', { useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true }); // connect to our database
 const db = mongoose.connection;
 const chatMessageSchema = new mongoose.Schema({
     id: String,
@@ -37,6 +37,7 @@ io.on("connection", socket => {
     socket.on("chat person", msg => {
         chatPerson.find({}, (err, found) => {
             if(err) throw err
+			console.log(found)
             io.emit("chat person respone", found)
         })
     });

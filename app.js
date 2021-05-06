@@ -1,7 +1,8 @@
 const express = require("express");
 const app = express();
 const server = require("http").createServer(app);
-var io = require("socket.io")(server);
+const { Server } = require("socket.io");
+const io = new Server(server);
 const port = 3000;
 var mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://chatapp:123654789@cluster0.1jwuj.mongodb.net/chatapp?retryWrites=true&w=majority', { useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true }); // connect to our database
